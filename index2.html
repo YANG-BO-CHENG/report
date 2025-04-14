@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>報表</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
+  </head>
+  <body>
+    <div id="treecontainer">
+      <div class="grid">
+        <div class="grid-tree-root" onclick="toggleNode('report')">報表</div>
+        <div id="report" class="nest">
+          <div class="grid-item" onclick="showDateSelector('daily')">
+            日報表
+          </div>
+          <div class="grid-item" onclick="showDateSelector('monthly')">
+            月報表
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="reportSection" class="report-section">
+      <div id="dailyReport" class="report-table" style="display: none">
+        <h3>日報表</h3>
+        <input
+          type="date"
+          id="dailyDate"
+          onchange="loadDailyReportData()"
+          placeholder="選擇日期"
+        />
+        <div id="dailyFieldSelectors" style="display: none">
+          <label><input type="checkbox" id="showDailyRA" checked />R(A)</label>
+          <label><input type="checkbox" id="showDailySA" checked />S(A)</label>
+          <label><input type="checkbox" id="showDailyTA" checked />T(A)</label>
+          <label><input type="checkbox" id="showDailyNA" checked />N(A)</label>
+          <label><input type="checkbox" id="showDailyKWH" checked />KWH</label>
+        </div>
+        <div id="dailyReportTable" style="display: none">
+          <table id="dailyTableData">
+            <thead>
+              <tr>
+                <th>小時</th>
+                <th>R(A)</th>
+                <th>S(A)</th>
+                <th>T(A)</th>
+                <th>N(A)</th>
+                <th>KWH</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- 日報數據 -->
+            </tbody>
+          </table>
+        </div>
+
+        <div id="monthlyReport" class="report-table" style="display: none">
+          <h3>月報表</h3>
+          <input
+            type="month"
+            id="monthlyDate"
+            onchange="loadMonthlyReportData()"
+            placeholder="選擇日期"
+          />
+          <div id="monthlyFieldSelectors" style="display: none">
+            <label
+              ><input
+                type="checkbox"
+                id="showMonthlyTotalKWH"
+                checked
+              />總和KWH</label
+            ><br />
+            <label
+              ><input
+                type="checkbox"
+                id="showMonthlyAvgKWH"
+                checked
+              />平均KWH</label
+            ><br />
+            <label
+              ><input
+                type="checkbox"
+                id="showMonthlyMaxKWH"
+                checked
+              />最大KWH</label
+            ><br />
+          </div>
+          <div id="monthlyReportTable" style="display: none">
+            <table id="monthlyTableData">
+              <thead>
+                <tr>
+                  <th>日期</th>
+                  <th>總和KWH</th>
+                  <th>平均KWH</th>
+                  <th>最大KWH</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- 月報數據 -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
